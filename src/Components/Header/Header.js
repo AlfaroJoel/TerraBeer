@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import logo from '../../Images/TerraBeerLogo.png';
 import {FaShoppingCart} from 'react-icons/fa';
 import { Image, Box, List, ListItem, ListIcon } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import Menu from '../Menu/Menu';
 
 const Header = () => {
@@ -22,20 +23,20 @@ const Header = () => {
         className={ active ? 'nav-menu active' : 'nav-menu'} 
         color='#fff' fontSize='1.5rem'
       >
-        <ListItem>
-          Home
+        <ListItem onClick={() => setActive(false)}>
+          <Link to='/'>Home</Link>
         </ListItem>
-        <ListItem>
-          Beers
+        <ListItem onClick={() => setActive(false)}>
+          <Link to='/beers'>Beers</Link>
         </ListItem>
-        <ListItem>
-          Accessories
+        <ListItem onClick={() => setActive(false)}>
+          <Link to='/accessories'>Accessories</Link>
         </ListItem>
-        <ListItem>
-          Factories
+        <ListItem onClick={() => setActive(false)}>
+          <Link to='/factories'>Our Factories</Link>
         </ListItem>
-        <ListItem>
-          Contact us
+        <ListItem onClick={() => setActive(false)}>
+          <Link to='/contact'>Contact us</Link>
         </ListItem>
       </List>
 
@@ -43,6 +44,7 @@ const Header = () => {
         alt='TerraBeer Logo' boxSize="6.5rem" 
         objectFit="cover"
       />
+
       <Box>
         <FaShoppingCart fontSize='1.85rem'/>
       </Box>
