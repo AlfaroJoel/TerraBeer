@@ -1,9 +1,8 @@
 import React, { useState }from 'react';
 import { Box, Image, Text, HStack, Button, Input } from '@chakra-ui/react';
 import {FaPercentage} from 'react-icons/fa';
-import {BsPlusLg, BsDashLg} from 'react-icons/bs';
-
-
+import {BsPlusLg, BsDashLg, BsCurrencyDollar} from 'react-icons/bs';
+import BtnAddCart from './BtnAddCart';
 
 const CardBeer = ({beer}) => {
   const [amountBeers, setAmountBeers] = useState(1);
@@ -59,6 +58,9 @@ const CardBeer = ({beer}) => {
       </Box>
 
       <Box my='1rem' display='flex' flexDirection='column'>
+        <Text fontSize='2rem' display='flex' alignItems='center' justifyContent='center'>
+          <BsCurrencyDollar fontSize='1.4rem'/>{(beer.price * amountBeers).toFixed(2)}
+        </Text>
         <HStack maxW="220px" my='1rem'>
           <Button 
             _hover={{backgroundColor: 'transparent'}}
@@ -67,21 +69,16 @@ const CardBeer = ({beer}) => {
           >
             <BsDashLg fontSize='3rem'/>
           </Button>
-          <Input textAlign='center' fontSize='2rem' type='number' value={amountBeers}/>
+          <Input textAlign='center' fontSize='2rem' type='number' value={amountBeers} readOnly/>
           <Button
             _hover={{backgroundColor: 'transparent'}}
             variant='outline' 
-            onClick={()=> {amountBeers < 6 && setAmountBeers(amountBeers + 1);}}
+            onClick={()=> {amountBeers < 12 && setAmountBeers(amountBeers + 1);}}
           >
             <BsPlusLg fontSize='3rem'/>
           </Button>
         </HStack>
-        <Button 
-          _hover={{backgroundColor: 'transparent'}} 
-          variant='outline' fontSize='1.35rem'
-        >
-          ADD TO CART
-        </Button>
+        <BtnAddCart quantity={amountBeers} beer={beer} />
       </Box>
       <Box mt='1.5rem' width='92%' height='2px' backgroundColor='#777'></Box>
     </Box>
