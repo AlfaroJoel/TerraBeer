@@ -11,9 +11,8 @@ import imageContact from '../../Images/imageHome4.jpg';
 
 const Home = () => {
   return(
-    <Box pt='7rem'>
+    <Box pt='7.5rem'>
       <Link to='/beers'><CardHome image={imageBeers} text='Our Beers' /></Link>
-      <Link to='/accessories'><CardHome image={imageAccessories} text='Accessories'/></Link>
       <Link to='/factories'><CardHome image={imageFactory} text='Our Factories'/></Link>
       <Link to='/contact'><CardHome image={imageContact} text='Conctact us'/></Link>
     </Box>
