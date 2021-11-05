@@ -52,7 +52,12 @@ const beers = [
 
 const BeersPage = () => {
   return (
-    <Box pt='7.5rem' backgroundImage={backgroundBeer} backgroundSize='cover' backgroundAttachment='fixed'>
+    <Box 
+      pt={{base: '7.5rem', sm: '100px'}} 
+      display={{sm: 'flex'}} 
+      flexDirection={{sm: 'column'}}
+      alignItems={{sm: 'center'}}
+    >
       {beers.map((item)=> {
         return (<CardBeer key={item.id} beer={item}/>);
       })}

@@ -15,15 +15,17 @@ const Header = () => {
       position='fixed' width='100%' 
       display='flex' alignItems='center' 
       justifyContent='space-between'
-      px='1.8rem' pb='2px'
+      px={{base: '1.8rem', sm: '4.5rem'}}
       borderBottom='1px solid #999999'
       background='#fff' zIndex='99'
     >
-      <Menu active={active} setActive={setActive}/>
+      <Box display={{base: 'block', sm: 'none'}}>
+        <Menu active={active} setActive={setActive}/>
+      </Box>
 
-      <List spacing={3} 
+      <List spacing={{base: '3', sm: '0'}}
         className={ active ? 'nav-menu active' : 'nav-menu'} 
-        color='#fff' fontSize='1.5rem'
+        color={{base: '#fff', sm: '#000'}} fontSize={{base: '1.5rem', sm: '1.2rem'}}
       >
         <ListItem onClick={() => setActive(false)}>
           <Link to='/'>Home</Link>
@@ -32,26 +34,24 @@ const Header = () => {
           <Link to='/beers'>Beers</Link>
         </ListItem>
         <ListItem onClick={() => setActive(false)}>
-          <Link to='/accessories'>Accessories</Link>
-        </ListItem>
-        <ListItem onClick={() => setActive(false)}>
-          <Link to='/factories'>Our Factories</Link>
+          <Link to='/factories'>Our Factory</Link>
         </ListItem>
         <ListItem onClick={() => setActive(false)}>
           <Link to='/contact'>Contact us</Link>
         </ListItem>
       </List>
+      
       <Link to='/'>
         <Image src={logo} 
-          alt='TerraBeer Logo' boxSize="6.5rem" 
+          alt='TerraBeer Logo' boxSize={{base:'6.5rem', sm: '70px'}}
           objectFit="cover"
         />
       </Link>
 
       <Box position='relative'>
         <Link to='/cart'>
-          <FaShoppingCart fontSize='1.85rem'/>
-          <Badge borderRadius='50%' colorScheme='none' fontSize='1.3rem' position='absolute' top='-10px' color='#E68B42'>{totalQuantity}</Badge>
+          <Box as={FaShoppingCart} fontSize={{base:'1.85rem', sm: '1.45rem'}}/>
+          <Badge borderRadius='50%' colorScheme='none' fontSize={{base:'1.3rem', sm: '1rem'}} position='absolute' top='-10px' color='#E68B42'>{totalQuantity}</Badge>
         </Link>
       </Box>
     </Box>
